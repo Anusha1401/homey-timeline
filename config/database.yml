@@ -81,7 +81,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: homey_timeline_production
+    database: <%= ENV['DATABASE_URL'] %>
     username: homey_timeline
     password: <%= ENV["HOMEY_TIMELINE_DATABASE_PASSWORD"] %>
   cache:
