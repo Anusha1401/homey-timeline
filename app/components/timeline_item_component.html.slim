@@ -1,0 +1,14 @@
+- if type == :comment
+  .flex.items-start.gap-4.p-4.bg-white.shadow-sm.rounded-lg
+    .text-blue-600.font-semibold Comment
+    .flex-1
+      p.text-gray-700= @item.body
+      p.text-sm.text-gray-400= @item.created_at.strftime("%b %d, %Y %H:%M")
+- elsif type == :status
+  .flex.items-start.gap-4.p-4.bg-gray-100.shadow-sm.rounded-lg
+    .text-green-600.font-semibold Status
+    .flex-1
+      p.text-gray-800
+        | Status changed to:
+        strong.text-green-700= @item.status.titleize
+      p.text-sm.text-gray-400= @item.created_at.strftime("%b %d, %Y %H:%M")

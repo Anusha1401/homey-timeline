@@ -1,0 +1,31 @@
+h1.text-2xl.font-bold.text-gray-800.mb-4 = @project.name
+h2.text-xl.text-gray-600.mb-6 Timeline
+
+.section.space-y-4
+- @timeline_items.each do |item|
+  .border.rounded-lg.shadow-sm.p-4.bg-white
+    p.text-sm.text-gray-700.flex.flex-wrap.items-center.gap-x-2
+      span.text-xs.text-gray-400 = "[#{item.created_at.strftime('%B %d, %Y - %I:%M %p')}]  " 
+      - if item.is_a?(Comment)
+        span.bg-blue-100.text-blue-800.text-xs.font-semibold.px-2.py-1.rounded Comment:
+        span= item.body
+      - else
+        span.bg-green-100.text-green-800.text-xs.font-semibold.px-2.py-1.rounded Status:
+        | Status changed to: 
+        strong.text-green-600= item.status.titleize
+
+hr.my-6
+
+h3.text-lg.font-semibold.text-gray-800.mb-2 Add Comment
+= form_with model: [@project, Comment.new], local: true, class: "space-y-2" do |f|
+  = f.text_area :body, rows: 3, class: "w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-300"
+  = f.submit "Add Comment", class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+
+hr.my-6
+
+h3.text-lg.font-semibold.text-gray-800.mb-2 Change Status
+= form_with url: project_status_changes_path(@project), scope: :status_change, method: :post, local: true, class: "space-y-2" do |f|
+  = f.select :status, ["Not Started", "In Progress", "Review", "Completed"], {}, class: "w-full p-2 border rounded"
+  = f.submit "Update Status", class: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+
+  

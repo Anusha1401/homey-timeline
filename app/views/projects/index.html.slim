@@ -1,0 +1,10 @@
+h1.text-2xl.font-bold.mb-4 Projects List
+
+- if @projects.any?
+  ul.divide-y.divide-gray-200
+    - @projects.each do |project|
+      li.py-2
+        = link_to project.name, project_path(project), class: "text-blue-600 hover:underline"
+- else
+  p.text-gray-500 No projects found.
+
