@@ -79,7 +79,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary:
+  primary: &primary
     <<: *default
     url: <%= ENV['DATABASE_URL'] %>
   cache:
@@ -94,4 +94,5 @@ production:
     <<: *primary
     database: homey_timeline_production_cable
     migrations_paths: db/cable_migrate
+
 
