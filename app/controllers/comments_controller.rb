@@ -19,8 +19,7 @@ class CommentsController < ApplicationController
 
   def initialize_project
     @project = Project.find(params[:project_id])
-    if @project.blank?
-      redirect_to project_path(params[:project_id]), alert: "Failed adding comment."
-    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to projects_path, alert: "Project not found."
   end
 end
