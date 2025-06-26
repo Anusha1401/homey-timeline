@@ -43,7 +43,18 @@ bundle install
 ```bash
 rails db:setup
 ```
+
+# Set up some dummy data
+```bash
+rails db:seed
+```
+
 # Run the server
 ```bash
 rails server
+```
+
+# Run the server
+```bash
+visit http://127.0.0.1:3000/
 ```
