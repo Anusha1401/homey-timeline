@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
   def create
     comment = @project.comments.new(comment_params)
     if comment.save
-      redirect_to root_path, notice: "Comment added successfully."
+      redirect_to project_path(params[:project_id]), notice: "Comment added successfully."
     else
-      redirect_to root_path, alert: "Failed to comment: #{comment.errors.full_messages.to_sentence}"
+      redirect_to project_path(params[:project_id]), alert: "Failed to comment: #{comment.errors.full_messages.to_sentence}"
     end
   end
 
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def initialize_project
     @project = Project.find(params[:project_id])
     if @project.blank?
-      redirect_to root_path, alert: "Project not found"
+      redirect_to project_path(params[:project_id]), alert: "Failed adding comment."
     end
   end
 end

@@ -6,9 +6,9 @@ class StatusChangesController < ApplicationController
     status_change = @project.status_changes.new(status_change_params)
 
     if status_change.save
-      redirect_to root_path, notice: "Status updated successfully."
+      redirect_to project_path(params[:project_id]), notice: "Status updated successfully."
     else
-      redirect_to root_path, alert: "Failed to update status: #{status_change.errors.full_messages.to_sentence}"
+      redirect_to project_path(params[:project_id]), alert: "Failed to update status: #{status_change.errors.full_messages.to_sentence}"
     end
   end
 
@@ -21,7 +21,7 @@ class StatusChangesController < ApplicationController
   def initialize_project
     @project = Project.find(params[:project_id])
     if @project.blank?
-      redirect_to root_path, alert: "Project not found"
+      redirect_to project_path(params[:project_id]), alert: "Project not found"
     end
   end
 end

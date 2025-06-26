@@ -1,5 +1,10 @@
 h1.text-2xl.font-bold.mb-4 Projects List
 
+= form_with url: projects_path, method: :post, local: true do |form|
+  = form.label :name, "New Project Name:", class: "block mb-1"
+  = form.text_field :name, required: true, class: "border rounded px-2 py-1 mb-2 block"
+  = form.submit "Create Project", class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+
 - if @projects.any?
   ul.divide-y.divide-gray-200
     - @projects.each do |project|
@@ -7,4 +12,3 @@ h1.text-2xl.font-bold.mb-4 Projects List
         = link_to project.name, project_path(project), class: "text-blue-600 hover:underline"
 - else
   p.text-gray-500 No projects found.
-
