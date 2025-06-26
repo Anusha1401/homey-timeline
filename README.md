@@ -1,13 +1,13 @@
 # Homey Timeline
 
-A simple Rails application to manage projects, track comments, and view timeline items like status changes and feedback — all in one place.
+A simple Rails application to create projects, add comments, and change status of projects
 
-## Live Demo (Heroku)
+## Live Demo (Heroku) 
+**TODO** - only initial set up done as its a paid service
 [https://homey-timeline-demo.herokuapp.com](https://homey-timeline-demo.herokuapp.com)
 
 ## GitHub Repository
 [https://github.com/Anusha1401/homey-timeline](https://github.com/Anusha1401/homey-timeline)
-
 
 ---
 
@@ -20,33 +20,30 @@ A simple Rails application to manage projects, track comments, and view timeline
 
 ---
 
-## Setup Instructions
+## Requirements
+- Ruby 3.3.x
+- Rails 8.0.x
+- PostgreSQL
 
-1. **Clone the repository**
+---
 
+# Setup Instructions
+
+## Clone the repository
 ```bash
 git clone https://github.com/Anusha1401/homey-timeline.git
 cd homey-timeline
+```
 
-2. **Install dependencies**
-
+# Install dependencies
 ```bash
 bundle install
-
-3. Set up the database
-
+```
+# Set up the database
 ```bash
-rails db:create
-rails db:migrate
-
-4. Run the server
-
+rails db:setup
+```
+# Run the server
 ```bash
 rails server
-
-
-## Author
-
-**Anusha Shetty**  
-[GitHub: @Anusha1401](https://github.com/Anusha1401)  
-[LinkedIn](https://www.linkedin.com/in/anusha1401/) *(if you want to include)*
+```
